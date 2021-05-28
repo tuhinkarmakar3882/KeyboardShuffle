@@ -1,5 +1,4 @@
 # KeyboardShuffle
----
 Javascript Mini Project 
 ## Build Setup
 
