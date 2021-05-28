@@ -257,7 +257,7 @@ export default {
   pre {
     border: 1px solid hsl(0, 0%, 80%);
     padding: 1rem;
-    border-radius: 4px ;
+    border-radius: 4px;
   }
 }
 </style>
