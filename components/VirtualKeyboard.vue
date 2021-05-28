@@ -1,6 +1,9 @@
 <template>
   <div class="virtual-keyboard-component">
-    <pre>{{ typedMessage.join('') }}</pre>
+    <header>
+      <section>{{ typedMessage.join('') }}<span class="cursor" /></section>
+    </header>
+
     <main>
       <section class="keys-row">
         <button
@@ -270,13 +273,37 @@ export default {
     }
   }
 
-  pre {
-    border: 1px solid hsl(0, 0%, 80%);
-    padding: 1rem;
-    border-radius: 4px;
-    margin-bottom: 12px;
-    height: 100px;
-    overflow: scroll;
+  header {
+    position: relative;
+
+    section {
+      position: relative;
+      white-space: pre;
+      border: 1px solid hsl(0, 0%, 80%);
+      padding: 1rem;
+      border-radius: 4px;
+      margin-bottom: 12px;
+      height: 200px;
+      overflow: scroll;
+    }
+
+    span.cursor {
+      position: absolute;
+      display: inline-block;
+      height: 1rem;
+      width: 2px;
+      border: 1px solid blue;
+      animation: blink 1s infinite alternate;
+    }
+
+    @keyframes blink {
+      0% {
+        opacity: 1;
+      }
+      20% {
+        opacity: 0;
+      }
+    }
   }
 }
 </style>
