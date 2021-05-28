@@ -217,14 +217,6 @@ export default {
 }
 
 .virtual-keyboard-component {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 24px;
-  height: 100vh;
-  padding: 1rem;
-
   main {
     display: grid;
     grid-template-rows: repeat(5, 64px);
@@ -282,6 +274,9 @@ export default {
     border: 1px solid hsl(0, 0%, 80%);
     padding: 1rem;
     border-radius: 4px;
+    margin-bottom: 12px;
+    height: 100px;
+    overflow: scroll;
   }
 }
 </style>
