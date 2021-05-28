@@ -10,15 +10,17 @@
 </template>
 
 <script>
-export default {
-  name: 'Index',
+import VirtualKeyboard from "../components/VirtualKeyboard";
 
+export default {
+  name: "Index",
+  components: { VirtualKeyboard },
   data() {
     return {
-      shouldShuffle: false,
-    }
-  },
-}
+      shouldShuffle: false
+    };
+  }
+};
 </script>
 
 <style lang="scss" scoped>

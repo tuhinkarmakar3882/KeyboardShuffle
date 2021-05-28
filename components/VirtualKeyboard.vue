@@ -1,7 +1,7 @@
 <template>
   <div class="virtual-keyboard-component">
     <header>
-      <section>{{ typedMessage.join('') }}<span class="cursor" /></section>
+      <section>{{ typedMessage.join("") }}<span class="cursor" /></section>
     </header>
 
     <main>
@@ -13,8 +13,8 @@
         >
           <span v-if="shiftPressed">{{ key.shiftedValue }}</span>
           <span v-else-if="capslock && isAlpha(key.defaultValue)">{{
-            key.shiftedValue
-          }}</span>
+              key.shiftedValue
+            }}</span>
           <span v-else>{{ key.defaultValue }}</span>
         </button>
 
@@ -31,8 +31,8 @@
         >
           <span v-if="shiftPressed">{{ key.shiftedValue }}</span>
           <span v-else-if="capslock && isAlpha(key.defaultValue)">{{
-            key.shiftedValue
-          }}</span>
+              key.shiftedValue
+            }}</span>
           <span v-else>{{ key.defaultValue }}</span>
         </button>
       </section>
@@ -49,8 +49,8 @@
         >
           <span v-if="shiftPressed">{{ key.shiftedValue }}</span>
           <span v-else-if="capslock && isAlpha(key.defaultValue)">{{
-            key.shiftedValue
-          }}</span>
+              key.shiftedValue
+            }}</span>
           <span v-else>{{ key.defaultValue }}</span>
         </button>
 
@@ -68,8 +68,8 @@
         >
           <span v-if="shiftPressed">{{ key.shiftedValue }}</span>
           <span v-else-if="capslock && isAlpha(key.defaultValue)">{{
-            key.shiftedValue
-          }}</span>
+              key.shiftedValue
+            }}</span>
           <span v-else>{{ key.defaultValue }}</span>
         </button>
         <button :class="shiftPressed && 'active'" @click="toggleShiftKey">
@@ -94,122 +94,122 @@
 
 <script>
 export default {
-  name: 'VirtualKeyboard',
+  name: "VirtualKeyboard",
 
   props: {
     shouldShuffle: {
       type: Boolean,
       required: false,
-      default: false,
-    },
+      default: false
+    }
   },
 
   data() {
     return {
       keys: [
-        { id: '~', defaultValue: '`', shiftedValue: '~' },
-        { id: '1', defaultValue: '1', shiftedValue: '!' },
-        { id: '2', defaultValue: '2', shiftedValue: '@' },
-        { id: '3', defaultValue: '3', shiftedValue: '#' },
-        { id: '4', defaultValue: '4', shiftedValue: '$' },
-        { id: '5', defaultValue: '5', shiftedValue: '%' },
-        { id: '6', defaultValue: '6', shiftedValue: '^' },
-        { id: '7', defaultValue: '7', shiftedValue: '&' },
-        { id: '8', defaultValue: '8', shiftedValue: '*' },
-        { id: '9', defaultValue: '9', shiftedValue: '(' },
-        { id: '0', defaultValue: '0', shiftedValue: ')' },
-        { id: '-', defaultValue: '-', shiftedValue: '_' },
-        { id: '=', defaultValue: '=', shiftedValue: '+' },
+        { id: "~", defaultValue: "`", shiftedValue: "~" },
+        { id: "1", defaultValue: "1", shiftedValue: "!" },
+        { id: "2", defaultValue: "2", shiftedValue: "@" },
+        { id: "3", defaultValue: "3", shiftedValue: "#" },
+        { id: "4", defaultValue: "4", shiftedValue: "$" },
+        { id: "5", defaultValue: "5", shiftedValue: "%" },
+        { id: "6", defaultValue: "6", shiftedValue: "^" },
+        { id: "7", defaultValue: "7", shiftedValue: "&" },
+        { id: "8", defaultValue: "8", shiftedValue: "*" },
+        { id: "9", defaultValue: "9", shiftedValue: "(" },
+        { id: "0", defaultValue: "0", shiftedValue: ")" },
+        { id: "-", defaultValue: "-", shiftedValue: "_" },
+        { id: "=", defaultValue: "=", shiftedValue: "+" },
 
-        { id: 'q', defaultValue: 'q', shiftedValue: 'Q' },
-        { id: 'w', defaultValue: 'w', shiftedValue: 'W' },
-        { id: 'e', defaultValue: 'e', shiftedValue: 'E' },
-        { id: 'r', defaultValue: 'r', shiftedValue: 'R' },
-        { id: 't', defaultValue: 't', shiftedValue: 'T' },
-        { id: 'y', defaultValue: 'y', shiftedValue: 'Y' },
-        { id: 'u', defaultValue: 'u', shiftedValue: 'U' },
-        { id: 'i', defaultValue: 'i', shiftedValue: 'I' },
-        { id: 'o', defaultValue: 'o', shiftedValue: 'O' },
-        { id: 'p', defaultValue: 'p', shiftedValue: 'P' },
-        { id: '[', defaultValue: '[', shiftedValue: '{' },
-        { id: ']', defaultValue: ']', shiftedValue: '}' },
-        { id: '\\', defaultValue: '\\', shiftedValue: '|' },
+        { id: "q", defaultValue: "q", shiftedValue: "Q" },
+        { id: "w", defaultValue: "w", shiftedValue: "W" },
+        { id: "e", defaultValue: "e", shiftedValue: "E" },
+        { id: "r", defaultValue: "r", shiftedValue: "R" },
+        { id: "t", defaultValue: "t", shiftedValue: "T" },
+        { id: "y", defaultValue: "y", shiftedValue: "Y" },
+        { id: "u", defaultValue: "u", shiftedValue: "U" },
+        { id: "i", defaultValue: "i", shiftedValue: "I" },
+        { id: "o", defaultValue: "o", shiftedValue: "O" },
+        { id: "p", defaultValue: "p", shiftedValue: "P" },
+        { id: "[", defaultValue: "[", shiftedValue: "{" },
+        { id: "]", defaultValue: "]", shiftedValue: "}" },
+        { id: "\\", defaultValue: "\\", shiftedValue: "|" },
 
-        { id: 'a', defaultValue: 'a', shiftedValue: 'A' },
-        { id: 's', defaultValue: 's', shiftedValue: 'S' },
-        { id: 'd', defaultValue: 'd', shiftedValue: 'D' },
-        { id: 'f', defaultValue: 'f', shiftedValue: 'F' },
-        { id: 'g', defaultValue: 'g', shiftedValue: 'G' },
-        { id: 'h', defaultValue: 'h', shiftedValue: 'H' },
-        { id: 'j', defaultValue: 'j', shiftedValue: 'J' },
-        { id: 'k', defaultValue: 'k', shiftedValue: 'K' },
-        { id: 'l', defaultValue: 'l', shiftedValue: 'L' },
-        { id: ';', defaultValue: ';', shiftedValue: ':' },
-        { id: "'", defaultValue: "'", shiftedValue: '"' },
+        { id: "a", defaultValue: "a", shiftedValue: "A" },
+        { id: "s", defaultValue: "s", shiftedValue: "S" },
+        { id: "d", defaultValue: "d", shiftedValue: "D" },
+        { id: "f", defaultValue: "f", shiftedValue: "F" },
+        { id: "g", defaultValue: "g", shiftedValue: "G" },
+        { id: "h", defaultValue: "h", shiftedValue: "H" },
+        { id: "j", defaultValue: "j", shiftedValue: "J" },
+        { id: "k", defaultValue: "k", shiftedValue: "K" },
+        { id: "l", defaultValue: "l", shiftedValue: "L" },
+        { id: ";", defaultValue: ";", shiftedValue: ":" },
+        { id: "'", defaultValue: "'", shiftedValue: "\"" },
 
-        { id: 'z', defaultValue: 'z', shiftedValue: 'Z' },
-        { id: 'x', defaultValue: 'x', shiftedValue: 'X' },
-        { id: 'c', defaultValue: 'c', shiftedValue: 'C' },
-        { id: 'v', defaultValue: 'v', shiftedValue: 'V' },
-        { id: 'b', defaultValue: 'b', shiftedValue: 'B' },
-        { id: 'n', defaultValue: 'n', shiftedValue: 'N' },
-        { id: 'm', defaultValue: 'm', shiftedValue: 'M' },
-        { id: ',', defaultValue: ',', shiftedValue: '<' },
-        { id: '.', defaultValue: '.', shiftedValue: '>' },
-        { id: '/', defaultValue: '/', shiftedValue: '?' },
+        { id: "z", defaultValue: "z", shiftedValue: "Z" },
+        { id: "x", defaultValue: "x", shiftedValue: "X" },
+        { id: "c", defaultValue: "c", shiftedValue: "C" },
+        { id: "v", defaultValue: "v", shiftedValue: "V" },
+        { id: "b", defaultValue: "b", shiftedValue: "B" },
+        { id: "n", defaultValue: "n", shiftedValue: "N" },
+        { id: "m", defaultValue: "m", shiftedValue: "M" },
+        { id: ",", defaultValue: ",", shiftedValue: "<" },
+        { id: ".", defaultValue: ".", shiftedValue: ">" },
+        { id: "/", defaultValue: "/", shiftedValue: "?" }
       ],
       typedMessage: [],
       shiftPressed: false,
-      capslock: false,
-    }
+      capslock: false
+    };
   },
 
   methods: {
     isAlpha(key) {
-      const asciiCode = key.charCodeAt(0)
-      if (asciiCode >= 65 && asciiCode <= 90) return true
-      return asciiCode >= 97 && asciiCode <= 122
+      const asciiCode = key.charCodeAt(0);
+      if (asciiCode >= 65 && asciiCode <= 90) return true;
+      return asciiCode >= 97 && asciiCode <= 122;
     },
     press(key) {
       this.typedMessage.push(
         this.shiftPressed || this.capslock ? key.shiftedValue : key.defaultValue
-      )
-      this.shiftPressed = false
+      );
+      this.shiftPressed = false;
 
-      this.shouldShuffle && (this.keys = this.shuffleArray(this.keys))
+      this.shouldShuffle && (this.keys = this.shuffleArray(this.keys));
     },
 
     toggleShiftKey() {
-      this.shiftPressed = !this.shiftPressed
+      this.shiftPressed = !this.shiftPressed;
     },
     addSpace() {
-      this.typedMessage.push(' ')
+      this.typedMessage.push(" ");
     },
     addNewLine() {
-      this.typedMessage.push('\n')
+      this.typedMessage.push("\n");
     },
     addTabChar() {
-      this.typedMessage.push('\t')
+      this.typedMessage.push("\t");
     },
     toggleCapsLock() {
-      this.capslock = !this.capslock
+      this.capslock = !this.capslock;
     },
 
     deleteChar() {
-      this.typedMessage.pop()
+      this.typedMessage.pop();
     },
 
     shuffleArray(array) {
       for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1))
-        const temp = array[i]
-        array[i] = array[j]
-        array[j] = temp
+        const j = Math.floor(Math.random() * (i + 1));
+        const temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
       }
-      return array
-    },
-  },
-}
+      return array;
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
